@@ -8,13 +8,19 @@
     tools:context=".MainActivity">
 
 
-    
+    <fragment
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="com.example.project.switch_status_job"
+        app:layout_constraintTop_toTopOf="parent"
+        />
     <GridLayout
         android:background="@drawable/navig_edit_text_enter"
         android:layout_width="match_parent"
         android:rowCount="2"
         android:columnCount="1"
-        android:layout_height="115dp"
+        android:layout_height="120dp"
         android:layout_marginBottom="250dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +40,7 @@
             <ImageView
                 android:layout_width="17dp"
                 android:layout_height="24dp"
-                android:scaleType="fitXY"
+             
                 android:src="@drawable/human_edittext"
                 android:translationX="8dp"
                 android:translationY="11dp" />
@@ -62,7 +68,7 @@
                 android:layout_width="17dp"
                 android:layout_height="24dp"
 
-                android:src="@drawable/human_edittext"
+                android:src="@drawable/taxi_"
                 android:translationX="8dp"
                 android:scaleType="fitXY"
                 android:translationY="11dp" />
@@ -80,6 +86,7 @@
         
     </GridLayout>
   <fragment
+
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:name="com.example.project.navigation_menu"
