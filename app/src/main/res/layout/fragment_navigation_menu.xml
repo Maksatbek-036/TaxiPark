@@ -1,77 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="412dp"
-    android:layout_height="95dp"
-    tools:context=".navigation_menu">
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FirstFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
-
+    <GridLayout
+        android:id="@+id/edit_text_list"
+        android:background="@drawable/navig_edit_text_enter"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        >
-       <GridLayout
+        android:rowCount="2"
+        android:columnCount="1"
+        android:layout_height="120dp"
 
-           android:layout_width="137dp"
-           android:columnCount="1"
-           android:layout_height="95dp">
-           <ImageButton
-               android:layout_width="40dp"
-               android:layout_height="40dp"
-               android:src="@drawable/profice_icon"
-               android:background="@color/white"
-               android:layout_gravity="center_horizontal"
-               />
-           <TextView
+        android:layout_marginBottom="250dp"
 
-               android:text="Профиль"
-               android:textSize="20sp"
-               android:layout_marginTop="15dp"
-              android:layout_gravity="center_horizontal"
-               />
-       </GridLayout>
-        <GridLayout
+        tools:ignore="UselessParent">
 
-            android:layout_width="137dp"
-            android:columnCount="1"
-            android:layout_height="95dp">
-            <ImageButton
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@color/white"
-                android:src="@drawable/balance"
-                android:layout_gravity="center_horizontal"
-                />
+        <LinearLayout
 
-            <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="13dp"
+
+            >
+
+            <ImageView
+                android:layout_width="17dp"
+                android:layout_height="24dp"
+
+                android:src="@drawable/human_edittext"
+                android:translationX="8dp"
+                android:translationY="11dp" />
+
+            <EditText
+                android:inputType="text"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="15dp"
-                android:text="Баланс"
-                android:textSize="20sp" />
-        </GridLayout>
-        <GridLayout
 
-            android:layout_width="137dp"
-            android:columnCount="1"
-            android:layout_height="95dp">
-            <ImageButton
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/gps"
-                android:background="@color/white"
-                android:layout_gravity="center_horizontal"
-                />
-            <TextView
-                android:text="GPS"
-                android:textSize="20sp"
-                android:layout_marginTop="15dp"
-                android:layout_gravity="center_horizontal"
-                />
-        </GridLayout>
+                android:backgroundTint="@color/white"
+                android:hint="@string/point_at_a"
+                android:layout_marginHorizontal="25dp"
 
-    </LinearLayout>
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginVertical="13dp">
+
+            <ImageView
+                android:layout_width="17dp"
+                android:layout_height="24dp"
+
+                android:src="@drawable/taxi_"
+                android:translationX="8dp"
+                android:scaleType="fitXY"
+                android:translationY="11dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:hint="@string/point_to_b"
+                android:inputType="text"
+                android:layout_marginHorizontal="25dp"
+                />
+
+        </LinearLayout>
+
+
+    </GridLayout>
 
 </FrameLayout>
