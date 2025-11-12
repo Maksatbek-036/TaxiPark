@@ -9,12 +9,15 @@
 
 
     <fragment
-
+android:id="@+id/sta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:name="com.example.project.switch_status_job"
         app:layout_constraintTop_toTopOf="parent"
         />
+
+
+
 
 
     <LinearLayout
@@ -26,7 +29,30 @@
         >
         <GridLayout
 
-            android:layout_width="137dp"
+            android:layout_width="102dp"
+            android:columnCount="1"
+            android:layout_height="95dp">
+            <ImageButton
+                android:id="@+id/btnMainScreen"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/home"
+
+                android:layout_gravity="center"
+                android:translationY="9dp"
+                />
+            <TextView
+
+                android:text="Главная"
+                android:textSize="20sp"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center_horizontal"
+                />
+
+        </GridLayout>
+        <GridLayout
+
+            android:layout_width="102dp"
             android:columnCount="1"
             android:layout_height="95dp">
             <ImageButton
@@ -45,10 +71,11 @@
                 android:layout_marginTop="15dp"
                 android:layout_gravity="center_horizontal"
                 />
+
         </GridLayout>
         <GridLayout
 
-            android:layout_width="137dp"
+            android:layout_width="102dp"
             android:columnCount="1"
             android:layout_height="95dp">
             <ImageButton
@@ -60,17 +87,19 @@
                 android:translationY="9dp"
                 android:layout_gravity="center"
                 />
-
             <TextView
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="15dp"
+
                 android:text="Баланс"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center_horizontal"
+                />
+
+
         </GridLayout>
         <GridLayout
 
-            android:layout_width="137dp"
+            android:layout_width="102dp"
             android:columnCount="1"
             android:layout_height="95dp">
             <ImageButton
@@ -84,11 +113,13 @@
 
                 />
             <TextView
-                android:text="GPS"
+
+                android:text="Карта"
                 android:textSize="20sp"
                 android:layout_marginTop="15dp"
                 android:layout_gravity="center_horizontal"
                 />
+
         </GridLayout>
 
     </LinearLayout>
