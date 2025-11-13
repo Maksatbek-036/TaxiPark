@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/etUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/Come_up_with_a_login"
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="Autofill,TextContrastCheck,VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            tools:ignore="VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/etConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="@string/Repeat_password"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:textColor="@color/white"
+            tools:ignore="Autofill,TextContrastCheck,VisualLintTextFieldSize" />
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:text="@string/Register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="VisualLintButtonSize" />
+
+        <Button
+            android:id="@+id/btnToLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:text="@string/Already_have_an_account_Log_in"
+            android:textColor="@android:color/white"
+            tools:ignore="TextContrastCheck,VisualLintButtonSize" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

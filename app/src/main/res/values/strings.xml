@@ -4,4 +4,20 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="point_to_b">Пункт назначения</string>
     <string name="point_at_a">Точка посадки</string>
+
+    <string name="driver">ВОДИТЕЛЬ</string>
+    <string name="welcome">ДОБРО ПАЖАЛОВАТЬ</string>
+    <string name="PLEASESELECTACATEGORY">ПОЖАЛУЙСТА ВЫБЕРИТЕ КАТЕГОРИЮ!</string>
+    <string name="passenger">ПАССАЖИР</string>
+    <string name="Agreement">Соглашеяние</string>
+    <string name="Already_have_an_account_Log_in">Уже есть аккаунт? Войти</string>
+    <string name="Register">Зарегистрироваться</string>
+    <string name="Repeat_password">Повтори пароль</string>
+    <string name="password">Пароль</string>
+    <string name="Come_up_with_a_login">Придумай логин</string>
+    <string name="Login">Логин</string>
+    <string name="Password">Пароль</string>
+    <string name="Remember_me">Запомнить меня</string>
+    <string name="login">Войти</string>
+    <string name="Please_select_a_category">Пожалуйста выберите категорию</string>
 </resources>
