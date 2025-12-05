@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Point">
+
+
+    <GridLayout
+        android:id="@+id/edit_text_list"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginBottom="250dp"
+        android:background="@color/cardview_dark_background"
+        android:columnCount="1"
+
+        android:rowCount="2"
+android:layout_marginTop="300dp"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="13dp"
+
+            >
+
+            <ImageView
+                android:layout_width="17dp"
+                android:layout_height="24dp"
+
+                android:src="@drawable/human_edittext"
+                android:translationX="8dp"
+                android:translationY="11dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25dp"
+
+                android:backgroundTint="@color/white"
+                android:hint="@string/point_at_a"
+                android:inputType="text"
+
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginVertical="13dp">
+
+            <ImageView
+                android:layout_width="17dp"
+                android:layout_height="24dp"
+
+                android:scaleType="fitXY"
+                android:src="@drawable/taxi_"
+                android:translationX="8dp"
+                android:translationY="11dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25dp"
+
+                android:backgroundTint="@color/white"
+                android:textColor="@color/white"
+                android:hint="@string/point_to_b"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+
+    </GridLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="98dp"
+        android:layout_marginTop="450dp"
+        android:orientation="horizontal"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="114dp"
+            android:layout_height="100dp"
+
+
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:gravity="center_horizontal"
+
+                android:text="Эконом"
+                android:textStyle="bold"
+                android:textSize="20sp"
+
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="100 сом"
+                android:translationY="40dp"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="114dp"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="34dp"
+            android:backgroundTint="@color/gray"
+
+
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:gravity="center_horizontal"
+android:textSize="20sp"
+                android:text="Эконом"
+                android:textStyle="bold"
+
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="100 сом"
+                android:translationY="40dp"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="114dp"
+            android:layout_height="100dp"
+
+
+
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:gravity="center_horizontal"
+android:textSize="20sp"
+                android:text="Эконом"
+                android:textStyle="bold"
+
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="100 сом"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:translationY="40dp" />
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="278dp"
+        android:layout_height="113dp"
+android:layout_marginTop="600dp"
+        android:layout_marginLeft="64dp"
+        android:text="Заказать такси"
+
+
+        android:backgroundTint="@color/black_for_back"
+
+        />
+
+
+</FrameLayout>
