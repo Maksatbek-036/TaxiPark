@@ -7,16 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageButton
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:src="@drawable/arrow_4"
-      android:background="@drawable/arrow_4"
-      app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-       android:layout_margin="15dp"
 
-      />
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/a1s"
         android:layout_width="wrap_content"

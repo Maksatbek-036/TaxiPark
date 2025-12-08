@@ -7,8 +7,42 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/balanc_text"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:text="Баланс:1500"
+        android:layout_marginLeft="20dp"
+        android:textSize="25sp"
+        android:layout_marginVertical="10dp"
+        />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="60dp"
+
+
+    >
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Вывести"
+        android:backgroundTint="@color/grean_14AE5C"
+        android:layout_marginHorizontal="30dp"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Вывести"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/grean_14AE5C"
+        android:layout_marginHorizontal="30dp"
+
+        />
+</LinearLayout>
+
 
 </FrameLayout>
