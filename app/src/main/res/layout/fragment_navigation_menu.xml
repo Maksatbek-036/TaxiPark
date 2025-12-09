@@ -14,7 +14,7 @@
         android:rowCount="2"
         android:columnCount="1"
         android:layout_height="120dp"
-
+        android:backgroundTint="@color/chocolate"
         android:layout_marginBottom="250dp"
 
         tools:ignore="UselessParent">

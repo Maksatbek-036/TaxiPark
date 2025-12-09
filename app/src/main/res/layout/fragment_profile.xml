@@ -8,11 +8,12 @@
 <GridLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     android:columnCount="2"
     android:rowCount="1"
     android:layout_margin="10dp"
     android:background="@drawable/shape"
-    android:backgroundTint="@color/gray"
+    android:backgroundTint="@color/chocolate"
 
 
     >
@@ -26,6 +27,7 @@ android:layout_margin="10dp"
     <TextView
         android:layout_width="330dp"
         android:layout_marginLeft="10dp"
+        android:textColor="@color/white"
         android:text="ФИО"
         android:textSize="19sp"
         android:layout_marginTop="15dp"
@@ -37,10 +39,11 @@ android:layout_margin="10dp"
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     android:orientation="vertical"
     android:layout_marginTop="100dp"
     android:background="@drawable/shape"
-    android:backgroundTint="@color/gray"
+    android:backgroundTint="@color/chocolate"
     android:divider="@drawable/divider_line"
     android:showDividers="middle"
     >
@@ -73,7 +76,7 @@ android:layout_margin="10dp"
             android:layout_marginLeft="10dp"
             android:text="Телефон"
             android:textSize="19sp"
-
+            android:textColor="@color/white"
             android:textStyle="bold"
 
             />
@@ -81,6 +84,7 @@ android:layout_margin="10dp"
             android:layout_width="330dp"
             android:layout_marginLeft="10dp"
             android:text="+996774250425"
+            android:textColor="@color/white"
             android:textSize="15sp"
 
             />
@@ -117,7 +121,7 @@ android:layout_margin="10dp"
             android:layout_marginLeft="10dp"
             android:text="Телефон"
             android:textSize="19sp"
-
+            android:textColor="@color/white"
             android:textStyle="bold"
 
             />
@@ -125,6 +129,7 @@ android:layout_margin="10dp"
             android:layout_width="330dp"
             android:layout_marginLeft="10dp"
             android:text="+996774250425"
+            android:textColor="@color/white"
             android:textSize="15sp"
 
             />
@@ -159,7 +164,7 @@ android:layout_margin="10dp"
             android:layout_marginLeft="10dp"
             android:text="Телефон"
             android:textSize="19sp"
-
+            android:textColor="@color/white"
             android:textStyle="bold"
 
             />
@@ -167,6 +172,7 @@ android:layout_margin="10dp"
             android:layout_width="330dp"
             android:layout_marginLeft="10dp"
             android:text="+996774250425"
+            android:textColor="@color/white"
             android:textSize="15sp"
 
             />
