@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.taxiclient;
 
 import android.content.Intent;
 import android.content.SharedPreferences;

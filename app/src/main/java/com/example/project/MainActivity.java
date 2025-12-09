@@ -37,22 +37,30 @@ private FrameLayout frameLayout;
             buttonNavProfile=findViewById(R.id.btnProfile);
             frameLayout=findViewById(R.id.frameLayout);
 
-
-
-            buttonNavGps.setOnClickListener(new View.OnClickListener() {
+            buttonNavBalance.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
-
-                    setNewFragment(firstFragment);
+                public void onClick(View v) {
+                    setNewFragment(new PayForm());
                 }
             });
-buttonNavProfile.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        MapsFragment mapsFragment=new MapsFragment();
-        setNewFragment(mapsFragment);
-    }
-});
+            buttonNavGps.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    setNewFragment(new MapsFragment());
+                }
+            });
+            buttonNavProfile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    setNewFragment(new FragmentProfile());
+                }
+            });
+
+
+
+
+
+
 
             return insets;
         });
