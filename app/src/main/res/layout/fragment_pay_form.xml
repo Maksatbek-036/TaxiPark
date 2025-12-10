@@ -34,7 +34,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="Вывести"
+        android:text="Пополнить"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/grean_14AE5C"
         android:layout_marginHorizontal="30dp"
