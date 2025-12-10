@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".MainActivity">
 
 
@@ -21,7 +22,7 @@ android:id="@+id/sta"
 
 
     <LinearLayout
-
+android:background="@color/chocolate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -34,9 +35,10 @@ android:id="@+id/sta"
             android:layout_height="95dp">
             <ImageButton
                 android:id="@+id/btnMainScreen"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/home"
+             android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:background="@drawable/home"
 
                 android:layout_gravity="center"
                 android:translationY="9dp"
@@ -57,16 +59,17 @@ android:id="@+id/sta"
             android:layout_height="95dp">
             <ImageButton
                 android:id="@+id/btnProfile"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/profice_icon"
-                android:background="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/profile_icon"
+android:background="@drawable/profile_icon"
                 android:layout_gravity="center"
                 android:translationY="9dp"
                 />
             <TextView
 
                 android:text="Профиль"
+
                 android:textSize="20sp"
                 android:layout_marginTop="15dp"
                 android:layout_gravity="center_horizontal"
@@ -80,10 +83,10 @@ android:id="@+id/sta"
             android:layout_height="95dp">
             <ImageButton
               android:id="@+id/btnBalance"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@color/white"
-                android:src="@drawable/balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+android:background="@drawable/balance_icon"
+                android:src="@drawable/balance_icon"
                 android:translationY="9dp"
                 android:layout_gravity="center"
                 />
@@ -104,10 +107,10 @@ android:id="@+id/sta"
             android:layout_height="95dp">
             <ImageButton
                 android:id="@+id/btnGps"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/gps"
-                android:background="@color/white"
+android:background="@drawable/gps"
                 android:layout_gravity="center"
                 android:translationY="9dp"
 

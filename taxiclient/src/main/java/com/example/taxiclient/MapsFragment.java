@@ -68,7 +68,7 @@ private void getCurrentLocation(){
         if (mapFragment != null) {
             mapFragment.getMapAsync(callback);
         }
-        getCurrentLocation();
+
     }
 
     @Override

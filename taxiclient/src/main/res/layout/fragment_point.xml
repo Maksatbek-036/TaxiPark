@@ -33,7 +33,7 @@ android:layout_marginTop="300dp"
                 android:layout_width="17dp"
                 android:layout_height="24dp"
 
-                android:src="@drawable/human_edittext"
+                android:src="@drawable/human"
                 android:translationX="8dp"
                 android:translationY="11dp" />
 
@@ -207,7 +207,7 @@ android:layout_marginTop="300dp"
 android:layout_marginTop="580dp"
         android:textSize="25sp"
         android:layout_marginLeft="64dp"
-        android:text="Заказать такси"
+        android:text="Оформить заказ"
 
 
         android:backgroundTint="@color/chocolate"

@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity2">
+    android:background="#F5F5F5"
+    tools:context=".RegisterActivity">
     <LinearLayout
         android:orientation="vertical"
         android:padding="24dp"
@@ -19,7 +20,8 @@
             android:layout_height="wrap_content"
             android:hint="@string/Come_up_with_a_login"
             android:inputType="text"
-            android:minHeight="48dp"
+           android:background="@drawable/border"
+            android:layout_marginVertical="5dp"
             tools:ignore="Autofill,TextContrastCheck,VisualLintTextFieldSize" />
 
         <EditText
@@ -29,17 +31,18 @@
             android:autofillHints=""
             android:hint="@string/password"
             android:inputType="textPassword"
-            android:minHeight="48dp"
+            android:layout_marginVertical="5dp"
+            android:background="@drawable/border"
             tools:ignore="VisualLintTextFieldSize" />
 
         <EditText
             android:id="@+id/etConfirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:layout_marginVertical="5dp"
             android:hint="@string/Repeat_password"
             android:inputType="textPassword"
-            android:minHeight="48dp"
+           android:background="@drawable/border"
             android:textColor="@color/white"
             tools:ignore="Autofill,TextContrastCheck,VisualLintTextFieldSize" />
 

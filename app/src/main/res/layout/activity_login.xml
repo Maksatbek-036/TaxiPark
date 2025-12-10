@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+android:background="#F5F5F5"
     tools:context=".LoginActivity">
 
     <LinearLayout
@@ -20,16 +21,19 @@
             android:layout_height="wrap_content"
             android:hint="@string/Login"
             android:textColorHint="#546E7A"
+            android:background="@drawable/border"
             tools:ignore="Autofill,TextFields,TouchTargetSizeCheck,TextContrastCheck,TextContrastCheck" />
 
         <EditText
+            android:layout_marginTop="5dp"
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/Password"
             android:inputType="textPassword"
-            android:minHeight="48dp"
+
             android:textColorHint="#546E7A"
+            android:background="@drawable/border"
             tools:ignore="Autofill,TouchTargetSizeCheck,TextContrastCheck,TextContrastCheck,TextContrastCheck,TextContrastCheck,TextContrastCheck,TextContrastCheck,TextContrastCheck,TextContrastCheck" />
 
         <CheckBox

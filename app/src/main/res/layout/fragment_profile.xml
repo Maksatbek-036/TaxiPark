@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F5F5F5"
     tools:context=".FragmentProfile">
 
 <GridLayout
@@ -62,12 +63,13 @@ android:layout_margin="10dp"
         >
         <ImageView
 
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@mipmap/ic_launcher"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/baseline_call_24"
             android:layout_margin="10dp"
             android:layout_rowSpan="2"
             android:layout_gravity="center"
+
 
 
             />
@@ -76,7 +78,7 @@ android:layout_margin="10dp"
             android:layout_width="330dp"
             android:layout_marginLeft="10dp"
             android:text="Телефон"
-            android:textSize="19sp"
+            android:textSize="16sp"
             android:textColor="@color/white"
             android:textStyle="bold"
 
@@ -107,9 +109,9 @@ android:layout_margin="10dp"
         >
         <ImageView
 
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@mipmap/ic_launcher"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/baseline_alternate_email_24"
             android:layout_margin="10dp"
             android:layout_rowSpan="2"
             android:layout_gravity="center"
@@ -120,8 +122,8 @@ android:layout_margin="10dp"
         <TextView
             android:layout_width="330dp"
             android:layout_marginLeft="10dp"
-            android:text="Телефон"
-            android:textSize="19sp"
+            android:text="Электронная почта"
+            android:textSize="16sp"
             android:textColor="@color/white"
             android:textStyle="bold"
 
@@ -129,7 +131,7 @@ android:layout_margin="10dp"
         <TextView
             android:layout_width="330dp"
             android:layout_marginLeft="10dp"
-            android:text="+996774250425"
+            android:text="maksatbek036@gmail.com"
             android:textColor="@color/white"
             android:textSize="15sp"
 
@@ -150,8 +152,8 @@ android:layout_margin="10dp"
         >
         <ImageView
 
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:src="@mipmap/ic_launcher"
             android:layout_margin="10dp"
             android:layout_rowSpan="2"
@@ -164,7 +166,7 @@ android:layout_margin="10dp"
             android:layout_width="330dp"
             android:layout_marginLeft="10dp"
             android:text="Телефон"
-            android:textSize="19sp"
+            android:textSize="16sp"
             android:textColor="@color/white"
             android:textStyle="bold"
 
