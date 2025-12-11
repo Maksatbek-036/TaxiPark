@@ -24,32 +24,31 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.LocationSource;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.Task;
 
-public class MapsFragment extends Fragment implements OnMapReadyCallback,GoogleApiClient.ConnectionCallbacks {
+public class MapsFragment extends Fragment implements OnMapReadyCallback{
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE =101 ;
+
     Location currentLocation;
    FusedLocationProviderClient fusedLocationProviderClient;
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
-        private static final int LOCATION_PERMISSION_REQUEST_CODE = 101;
+
         @Override
         public void onMapReady(GoogleMap googleMap) {
+            LatLng l=new LatLng(-50,150);
+googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
+googleMap.moveCamera(CameraUpdateFactory.newLatLng(l));
+MarkerOptions options=new MarkerOptions().position(l).title("Ss");
+options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
 
         }
     };
-private void getCurrentLocation(){
-    if(getContext()!=null){
-        if(ActivityCompat.checkSelfPermission(getContext(),Manifest.permission.ACCESS_COARSE_LOCATION)!=PackageManager.PERMISSION_GRANTED
-        && ActivityCompat.checkSelfPermission(getContext(),Manifest.permission.ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED
-        ){
-            return;
-        }
- Task<Location> locationTask=fusedLocationProviderClient.getLastLocation();
-    }
-}
 
 
     @Nullable
@@ -69,17 +68,9 @@ private void getCurrentLocation(){
             mapFragment.getMapAsync(callback);
         }
 
-    }
-
-    @Override
-    public void onConnected(@Nullable Bundle bundle) {
 
     }
 
-    @Override
-    public void onConnectionSuspended(int i) {
-
-    }
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {

@@ -14,7 +14,7 @@
  android:background="@drawable/shape"
         android:backgroundTint="@color/chocolate"
         android:columnCount="1"
-
+        android:layout_marginHorizontal="20dp"
         android:rowCount="2"
 android:layout_marginTop="300dp"
 
@@ -38,6 +38,7 @@ android:layout_marginTop="300dp"
                 android:translationY="11dp" />
 
             <EditText
+                android:id="@+id/edit_text_a"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="25dp"
@@ -66,6 +67,7 @@ android:layout_marginTop="300dp"
                 android:translationY="11dp" />
 
             <EditText
+                android:id="@+id/edit_text_b"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="25dp"

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class PageOrders extends Fragment {
 private RecyclerView recyclerView;
-private Button buttonAccept;
+
 
 private ArrayList<Order> orderArrayList=new ArrayList<>();
 

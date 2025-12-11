@@ -9,13 +9,7 @@
     tools:context=".MainActivity">
 
 
-    <fragment
-android:id="@+id/sta"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:name="com.example.project.switch_status_job"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+
 
 
 

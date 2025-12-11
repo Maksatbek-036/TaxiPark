@@ -24,7 +24,12 @@ private ImageButton buttonNavMain;
 PageOrders pageOrders=new PageOrders();
 private ImageButton buttonNavGps;
 private ImageButton buttonNavBalance;
-FragmentProfile fp=new FragmentProfile();
+
+Fragment fragment_=new FragmentProfile();
+    FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
+
+
+
 
 
     @Override
@@ -41,11 +46,14 @@ FragmentProfile fp=new FragmentProfile();
             buttonNavBalance=findViewById(R.id.btnBalance);
             buttonNavProfile=findViewById(R.id.btnProfile);
 
+ft.add(R.id.frameLayout,new PageOrders());
 
             buttonNavMain.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    setNewFragment(pageOrders);
+
+
+                    setNewFragment(new PageOrders());
                 }
             });
             buttonNavBalance.setOnClickListener(new View.OnClickListener() {
@@ -84,9 +92,16 @@ FragmentProfile fp=new FragmentProfile();
 
 
     private void setNewFragment(Fragment fragment) {
-        FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.frameLayout,fragment);
-        ft.addToBackStack(null);
+       ft=getSupportFragmentManager().beginTransaction();
+        if(!fragment_.isRemoving()){
+            ft.remove(fragment_);
+        }
+
+        fragment_=fragment;
+        ft.replace(R.id.frameLayout,fragment_);
+
+
+
         ft.commit();
     }
 
