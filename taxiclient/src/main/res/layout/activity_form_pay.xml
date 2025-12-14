@@ -1,88 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray"
-    tools:context=".FormPay">
+    android:background="#2C2C2E"
+    android:id="@+id/main"
+    tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Заказать такси"
-        android:textSize="25sp"
-        tools:layout_editor_absoluteX="102dp"
-        tools:layout_editor_absoluteY="44dp" />
+        android:text="Способы оплаты"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="normal"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="651dp"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="79dp">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardPaymentContainer"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="#F4F2F5"
+        app:layout_constraintTop_toBottomOf="@id/titleTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginHorizontal="20dp"
-            android:backgroundTint="@color/white"
-            android:orientation="horizontal"
-           android:background="@drawable/border_45_"
-
-            >
+            android:layout_height="match_parent"
+            android:background="#FFFAFA"> <ImageView
+            android:id="@+id/cardIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_credit_card"
+            android:contentDescription="Карта"
+            app:tint="#4A4A4A"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
             <TextView
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:drawablePadding="20dp"
-
-android:drawableLeft="@drawable/balance_icon"
-
-                android:text="Наличные"
-
-                android:textSize="20sp" />
-
-            <CheckBox
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
+                android:text="ПО КАРТЕ"
+                android:textColor="#4A4A4A"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toEndOf="@id/cardIcon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
+<!--            <ImageView-->
+<!--                android:layout_width="24dp"-->
+<!--                android:layout_height="24dp"-->
+<!--                android:src="@drawable/ic_arrow_down"-->
+<!--                android:contentDescription="Раскрыть"-->
+<!--                app:tint="#4A4A4A"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent" />-->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
-                />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cashPaymentContainer"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="#F4F2F5"
+        app:layout_constraintTop_toBottomOf="@id/cardPaymentContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        </LinearLayout>
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginHorizontal="20dp"
-            android:backgroundTint="@color/white"
-            android:orientation="horizontal"
-            android:background="@drawable/border_45_"
+            android:layout_height="match_parent">
 
-            >
+            <ImageView
+                android:id="@+id/cashIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/balance_icon"
+                android:contentDescription="Наличные"
+                app:tint="#4A4A4A"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
             <TextView
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:drawablePadding="20dp"
-
-                android:drawableLeft="@drawable/balance_icon"
-
-                android:text="Наличные"
-
-                android:textSize="20sp" />
-
-            <CheckBox
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
+                android:text="НАЛИЧНЫЕ"
+                android:textColor="#4A4A4A"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toEndOf="@id/cashIcon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
+    <Button
+        android:id="@+id/addCardButton"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:text="Добавить карту"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:backgroundTint="#3C3C3E"
+        android:layout_marginTop="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:padding="0dp"
+        app:cornerRadius="12dp"
+        app:layout_constraintTop_toBottomOf="@id/cashPaymentContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-                />
+    <Button
+        android:id="@+id/doneButton"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:text="Готово"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:backgroundTint="#D1D1D6"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:padding="0dp"
+        app:cornerRadius="12dp"
+        app:layout_constraintTop_toBottomOf="@id/addCardButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        </LinearLayout>
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
