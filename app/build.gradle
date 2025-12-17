@@ -33,7 +33,7 @@ android {
 }
 
 dependencies {
-
+    implementation libs.okhttp
     implementation libs.appcompat
     implementation libs.material
     implementation libs.activity
@@ -41,6 +41,7 @@ dependencies {
     implementation libs.play.services.maps
     implementation libs.legacy.support.v4
     implementation libs.recyclerview
+    implementation libs.firebase.crashlytics.buildtools
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core

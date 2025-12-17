@@ -9,11 +9,14 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
+
 public class RegisterActivity extends AppCompatActivity {
 
     EditText etUsername, etPassword, etConfirm;
     Button btnRegister, btnToLogin;
     SharedPreferences sharedPreferences;
+    OkClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,10 @@ public class RegisterActivity extends AppCompatActivity {
             editor.putString("username", username);
             editor.putString("password", password);
             editor.apply();
+
+
+
+
 
             Toast.makeText(this, "Регистрация успешна!", Toast.LENGTH_SHORT).show();
 
