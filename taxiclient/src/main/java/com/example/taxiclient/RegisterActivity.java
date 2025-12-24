@@ -16,7 +16,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText etUsername, etPassword, etConfirm;
     Button btnRegister, btnToLogin;
     SharedPreferences sharedPreferences;
-    OkClient client;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

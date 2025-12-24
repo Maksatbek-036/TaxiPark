@@ -3,15 +3,22 @@ package com.example.taxiclient;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
+import com.example.taxiclient.RequesModel.Client;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -35,17 +42,27 @@ public class LoginActivity extends AppCompatActivity {
             String username = etUsername.getText().toString().trim();
             String password = etPassword.getText().toString().trim();
 
-            String savedUsername = sharedPreferences.getString("username", "");
-            String savedPassword = sharedPreferences.getString("password", "");
+//            String savedUsername = sharedPreferences.getString("username", "");
+//            String savedPassword = sharedPreferences.getString("password", "");
+var  client=RetrofitClient.getApi(username,password);
+            String savedUsername=client.getLogin();
+            String savedPassword=client.getPassword();
+
 
             if (username.equals(savedUsername) && password.equals(savedPassword)) {
                 Toast.makeText(this, "Вход успешен!", Toast.LENGTH_SHORT).show();
                 // После входа можно перейти обратно на MainActivity или другой экран
 startActivity(new Intent(this, MainActivity.class));
-finish();
+
             } else {
                 Toast.makeText(this, "Неверный логин или пароль", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
+
+
+
+
+
 }
