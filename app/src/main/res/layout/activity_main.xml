@@ -8,126 +8,104 @@
 
     tools:context=".MainActivity">
 
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
 
-
-
-
-
-
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout" />
 
     <LinearLayout
-android:background="@color/chocolate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout"
+        android:layout_width="411dp"
+        android:layout_height="60dp"
+        android:background="#242425"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        >
+app:layout_constraintBottom_toBottomOf="parent"
+
+        tools:ignore="MissingConstraints">
+
         <GridLayout
 
             android:layout_width="102dp"
-            android:columnCount="1"
-            android:layout_height="95dp">
+            android:layout_height="55dp"
+            android:columnCount="1">
+
             <ImageButton
                 android:id="@+id/btnMainScreen"
-             android:layout_width="wrap_content"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:background="@drawable/home"
-
                 android:layout_gravity="center"
-                android:translationY="9dp"
-                />
-            <TextView
 
-                android:text="Главная"
-                android:textSize="20sp"
-                android:layout_marginTop="15dp"
-                android:layout_gravity="center_horizontal"
-                />
+                android:background="@drawable/home"
+                android:translationY="9dp" />
+
 
         </GridLayout>
+
         <GridLayout
 
             android:layout_width="102dp"
-            android:columnCount="1"
-            android:layout_height="95dp">
+            android:layout_height="55dp"
+            android:columnCount="1">
+
             <ImageButton
                 android:id="@+id/btnProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/profile_icon"
-android:background="@drawable/profile_icon"
                 android:layout_gravity="center"
-                android:translationY="9dp"
-                />
-            <TextView
+                android:background="@drawable/profile_icon"
+                android:src="@drawable/profile_icon"
+                android:translationY="9dp" />
 
-                android:text="Профиль"
-
-                android:textSize="20sp"
-                android:layout_marginTop="15dp"
-                android:layout_gravity="center_horizontal"
-                />
 
         </GridLayout>
+
         <GridLayout
 
             android:layout_width="102dp"
-            android:columnCount="1"
-            android:layout_height="95dp">
+            android:layout_height="55dp"
+            android:columnCount="1">
+
             <ImageButton
-              android:id="@+id/btnBalance"
+                android:id="@+id/btnBalance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-android:background="@drawable/balance_icon"
-                android:src="@drawable/balance_icon"
-                android:translationY="9dp"
                 android:layout_gravity="center"
-                />
-            <TextView
-
-                android:text="Баланс"
-                android:textSize="20sp"
-                android:layout_marginTop="15dp"
-                android:layout_gravity="center_horizontal"
-                />
+                android:background="@drawable/balance_icon"
+                android:src="@drawable/balance_icon"
+                android:translationY="9dp" />
 
 
         </GridLayout>
+
         <GridLayout
 
             android:layout_width="102dp"
-            android:columnCount="1"
-            android:layout_height="95dp">
+            android:layout_height="55dp"
+            android:columnCount="1">
+
             <ImageButton
                 android:id="@+id/btnGps"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/gps"
-android:background="@drawable/gps"
+
                 android:layout_gravity="center"
+                android:background="@drawable/gps"
                 android:translationY="9dp"
 
                 />
-            <TextView
 
-                android:text="Карта"
-                android:textSize="20sp"
-                android:layout_marginTop="15dp"
-                android:layout_gravity="center_horizontal"
-                />
 
         </GridLayout>
 
     </LinearLayout>
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_marginTop="40dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
 
-        android:layout_marginBottom="95dp"
-/>
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

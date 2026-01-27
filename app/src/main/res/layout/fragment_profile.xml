@@ -3,30 +3,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
+    android:background="@color/cardview_dark_background"
     tools:context=".FragmentProfile">
 
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-android:paddingVertical="10dp"
-
-        android:layout_marginTop="100dp"
-        android:background="@drawable/shape"
         android:layout_marginHorizontal="10dp"
-        android:backgroundTint="@color/chocolate"
+
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape"
+        android:backgroundTint="#242425"
         android:columnCount="1"
+        android:paddingVertical="10dp"
         android:rowCount="2"
 
 
         >
 
         <ImageView
-            android:translationX="160dp"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginVertical="10dp"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/ic_launcher"
+            android:translationX="160dp" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,19 +39,16 @@ android:paddingVertical="10dp"
             />
 
 
-
-
-
     </GridLayout>
 
     <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
 
     android:orientation="vertical"
-    android:layout_marginTop="220dp"
+    android:layout_marginTop="120dp"
     android:background="@drawable/shape"
-    android:backgroundTint="@color/chocolate"
+    android:backgroundTint="#242425"
     android:divider="@drawable/divider_line"
     android:showDividers="middle"
 
@@ -176,7 +174,7 @@ android:translationX="20dp"
                 android:layout_height="wrap_content"
 
                 android:src="@drawable/prava"
-android:translationX="40dp"
+        android:translationX="40dp"
                 android:textColor="@color/white"
 
 

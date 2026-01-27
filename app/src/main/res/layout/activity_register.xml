@@ -49,19 +49,20 @@
         <Button
             android:id="@+id/btnRegister"
             android:text="@string/Register"
-            android:backgroundTint="@color/chocolate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:ignore="VisualLintButtonSize" />
+
+            android:layout_width="277dp"
+            android:layout_height="55dp"
+            android:backgroundTint="#242425"
+      />
 
         <Button
             android:id="@+id/btnToLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="277dp"
+            android:layout_height="55dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="@android:color/darker_gray"
             android:text="@string/Already_have_an_account_Log_in"
             android:textColor="@android:color/white"
-            tools:ignore="TextContrastCheck,VisualLintButtonSize" />
+          />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
