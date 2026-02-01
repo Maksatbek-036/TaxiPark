@@ -1,6 +1,10 @@
 package com.example.project;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -9,16 +13,21 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 public class MainActivity extends AppCompatActivity  {
+    private FusedLocationProviderClient fusedLocationClient;
 private ImageButton buttonNavProfile;
 private ImageButton buttonNavMain;
 PageOrders pageOrders=new PageOrders();
@@ -26,7 +35,7 @@ private ImageButton buttonNavGps;
 private ImageButton buttonNavBalance;
 
 Fragment fragment_=new FragmentProfile();
-    FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
+FragmentTransaction ft;
 
 
 
@@ -46,7 +55,11 @@ Fragment fragment_=new FragmentProfile();
             buttonNavBalance=findViewById(R.id.btnBalance);
             buttonNavProfile=findViewById(R.id.btnProfile);
 
-ft.add(R.id.frameLayout,new PageOrders());
+        if(ft==null){
+            ft=getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.frameLayout,pageOrders);
+            ft.commit();
+        }
 
             buttonNavMain.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -80,6 +93,7 @@ ft.add(R.id.frameLayout,new PageOrders());
 
 
 
+fusedLocationClient= LocationServices.getFusedLocationProviderClient(this);
 
 
 
@@ -88,6 +102,7 @@ ft.add(R.id.frameLayout,new PageOrders());
         });
 
     }
+
 
 
 

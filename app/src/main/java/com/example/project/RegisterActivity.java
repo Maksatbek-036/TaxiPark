@@ -8,20 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.project.API.RegisterAPI;
 import com.example.project.API.RegisterRequest;
-import com.example.project.Responses.RegisterResponse;
 
-import java.io.IOException;
-
-import okhttp3.FormBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -34,6 +25,8 @@ public class RegisterActivity extends AppCompatActivity {
     Button btnRegister, btnToLogin;
     private RegisterAPI registerAPI;
     SharedPreferences sharedPreferences;
+    private final  String baseUrl="http://192.168.0.106:5001/";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister = findViewById(R.id.btnRegister);
         btnToLogin = findViewById(R.id.btnToLogin); // кнопка "Уже есть аккаунт"
 Retrofit retrofit=new Retrofit.Builder()
-        .baseUrl("http://192.168.0.106:5001/")
+        .baseUrl(baseUrl)
         .addConverterFactory(GsonConverterFactory.create())
         .build();
 //        sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);

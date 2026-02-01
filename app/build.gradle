@@ -33,6 +33,7 @@ android {
 }
 
 dependencies {
+    implementation libs.play.services.location.v2101
     implementation libs.okhttp
     implementation libs.appcompat
     implementation libs.material
@@ -45,6 +46,9 @@ dependencies {
     implementation libs.fragment
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'org.mapsforge:mapsforge-map-android:0.20.0'
+    implementation 'org.mapsforge:mapsforge-map:0.20.0'
+    implementation 'org.mapsforge:mapsforge-themes:0.20.0'
     implementation libs.cronet.embedded
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit

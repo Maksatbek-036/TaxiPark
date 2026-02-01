@@ -2,14 +2,35 @@ package com.example.project;
 
 public class Order {
 
-    private String id;
-    private int price;
-    private boolean isStatus=false;
+private int id;
+private int clientId;
+private int tariffId;
 
-    public Order( String id, String pointA, String pointB) {
-        this.isStatus = isStatus;
-        this.id = id;
-        this.pointA = pointA;
+private String pointA;
+private String pointB;
+private int totalPrice;
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public int getTariffId() {
+        return tariffId;
+    }
+
+    public void setTariffId(int tariffId) {
+        this.tariffId = tariffId;
+    }
+
+    public String getPointB() {
+        return pointB;
+    }
+
+    public void setPointB(String pointB) {
         this.pointB = pointB;
     }
 
@@ -17,34 +38,38 @@ public class Order {
         return pointA;
     }
 
-    public String getPointB() {
-        return pointB;
+    public void setPointA(String pointA) {
+        this.pointA = pointA;
     }
 
-    private String pointA;
-    private String pointB;
-
-    public boolean isStatus() {
-        return isStatus;
-    }
-
-    public void setStatus(boolean status) {
-        isStatus = status;
-    }
-
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public int getPrice() {
-        return price;
+    public int getClientId() {
+        return clientId;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
+    }
+
+    public Order(int clientId, int id, String pointA, String pointB, int tariffId, int totalPrice) {
+        this.clientId = clientId;
+        this.id = id;
+        this.pointA = pointA;
+        this.pointB = pointB;
+        this.tariffId = tariffId;
+        this.totalPrice = totalPrice;
     }
 }
+
+
+
+
+
+

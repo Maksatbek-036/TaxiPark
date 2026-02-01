@@ -43,7 +43,7 @@
             android:hint="@string/Repeat_password"
             android:inputType="textPassword"
            android:background="@drawable/border"
-            android:textColor="@color/white"
+
             tools:ignore="Autofill,TextContrastCheck,VisualLintTextFieldSize" />
 
         <Button

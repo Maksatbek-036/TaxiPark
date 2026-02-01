@@ -12,11 +12,11 @@
         android:id="@+id/order_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Заказ:0000"
+        android:text="Заказ:"
         android:textSize="26sp"
         android:textAlignment="center"
 
-        />
+        tools:ignore="MissingConstraints" />
     <GridLayout
         android:id="@+id/info_context"
         android:layout_width="match_parent"
