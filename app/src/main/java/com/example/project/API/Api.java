@@ -16,6 +16,7 @@ public interface Api {
     Call<List<Order>>  getOrders();
     @PATCH("orders/order/accept")
     Call<Void> acceptOrder(@Body OrderAcceptRequest request);
+    
 
 
 

@@ -46,6 +46,17 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
 
+        // Движок osmdroid
+        implementation 'org.osmdroid:osmdroid-android:6.1.20'
+
+        // Адаптер для Mapsforge (важно: версии должны совпадать с osmdroid)
+        implementation 'org.osmdroid:osmdroid-mapsforge:6.1.20'
+
+        // Ядро Mapsforge
+        implementation 'org.mapsforge:mapsforge-map-android:0.20.0'
+        implementation 'org.mapsforge:mapsforge-themes:0.20.0'
+    implementation libs.preference
+
 
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit

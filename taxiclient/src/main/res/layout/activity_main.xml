@@ -8,20 +8,66 @@
     tools:context=".MainActivity">
 
 
- <androidx.fragment.app.FragmentContainerView
-     android:layout_width="match_parent"
-     android:layout_height="wrap_content"
-     android:id="@+id/mapd"
-     app:layout_constraintTop_toTopOf="parent"
-     android:name="com.example.taxiclient.MapsFragment"
-     />
-    <androidx.fragment.app.FragmentContainerView
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/mapd2"
-        android:name="com.example.taxiclient.Point"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout" />
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="411dp"
+        android:layout_height="60dp"
+        android:background="#242425"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        />
+
+        tools:ignore="MissingConstraints">
+
+        <GridLayout
+
+            android:layout_width="102dp"
+            android:layout_height="55dp"
+            android:columnCount="1">
+
+            <ImageButton
+                android:id="@+id/btnMainScreen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center"
+
+                android:background="@drawable/home"
+                android:translationY="9dp" />
+
+
+        </GridLayout>
+
+
+
+        <GridLayout
+
+            android:layout_width="102dp"
+            android:layout_height="55dp"
+            android:columnCount="1">
+
+            <ImageButton
+                android:id="@+id/btnGps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center"
+                android:background="@drawable/gps"
+                android:translationY="9dp"
+
+                />
+
+
+        </GridLayout>
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

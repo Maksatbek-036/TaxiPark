@@ -22,6 +22,8 @@ playServicesLocation = "21.3.0"
 legacySupportV4 = "1.0.0"
 firebaseCrashlyticsBuildtools = "3.0.6"
 cronetEmbedded = "143.7445.0"
+retrofit = "2.9.0"
+preference = "1.2.1"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -44,6 +46,8 @@ play-services-location = { group = "com.google.android.gms", name = "play-servic
 legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacySupportV4" }
 firebase-crashlytics-buildtools = { group = "com.google.firebase", name = "firebase-crashlytics-buildtools", version.ref = "firebaseCrashlyticsBuildtools" }
 cronet-embedded = { group = "org.chromium.net", name = "cronet-embedded", version.ref = "cronetEmbedded" }
+retrofit = { module = "retrofit2:retrofit", version.ref = "retrofit" }
+preference = { group = "androidx.preference", name = "preference", version.ref = "preference" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

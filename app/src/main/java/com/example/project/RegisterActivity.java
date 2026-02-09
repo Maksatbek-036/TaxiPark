@@ -24,7 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText etUsername, etPassword, etConfirm;
     Button btnRegister, btnToLogin;
     private RegisterAPI registerAPI;
-    SharedPreferences sharedPreferences;
+
     private final  String baseUrl="http://192.168.0.106:5001/";
 
 
@@ -38,12 +38,12 @@ public class RegisterActivity extends AppCompatActivity {
         etConfirm = findViewById(R.id.etConfirm);
         btnRegister = findViewById(R.id.btnRegister);
         btnToLogin = findViewById(R.id.btnToLogin); // кнопка "Уже есть аккаунт"
-Retrofit retrofit=new Retrofit.Builder()
+        Retrofit retrofit=new Retrofit.Builder()
         .baseUrl(baseUrl)
         .addConverterFactory(GsonConverterFactory.create())
         .build();
 //        sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
-registerAPI = retrofit.create(RegisterAPI.class);
+        registerAPI = retrofit.create(RegisterAPI.class);
 
         // Регистрация нового пользователя
         btnRegister.setOnClickListener(v -> {
@@ -95,14 +95,6 @@ call.enqueue(new Callback<Void>() {
     public void onFailure(Call<Void> call, Throwable t) {
         Log.e("RETROFIT", "Ошибка сети: " + t.getMessage());
     }
-
-
-
-
 }) ;
-
-
-
-
  }
 }

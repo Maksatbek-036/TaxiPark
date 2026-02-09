@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
             finish();
             return;
         }
-loginApi = retrofit.create(LoginApi.class);
+        loginApi = retrofit.create(LoginApi.class);
 
 
 //         sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
@@ -91,31 +91,31 @@ loginApi = retrofit.create(LoginApi.class);
     private DriverResponce login(String login, String password) {
         RegisterRequest request = new RegisterRequest(login, password);
 
-Call<DriverResponce> call = loginApi.login(request);
-call.enqueue(new Callback<DriverResponce>() {
-            @Override
-            public void onResponse(Call<DriverResponce> call, Response<DriverResponce> response) {
-if(response.isSuccessful() && response.body()!=null){
- driverResponce=response.body();
-   memory.saveDriver(driverResponce);
+        Call<DriverResponce> call = loginApi.login(request);
+        call.enqueue(new Callback<DriverResponce>() {
+                         @Override
+                         public void onResponse(Call<DriverResponce> call, Response<DriverResponce> response) {
+                             if(response.isSuccessful() && response.body()!=null){
+                                 driverResponce=response.body();
+                                 memory.saveDriver(driverResponce);
 
-    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-    finish();
-    Toast.makeText(LoginActivity.this, "Вход успешен!", Toast.LENGTH_SHORT).show();
-}else if (response.code() == 401) {
-   Toast.makeText(LoginActivity.this, "Неверный логин или пароль", Toast.LENGTH_SHORT).show();
-}
+                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                 finish();
+                                 Toast.makeText(LoginActivity.this, "Вход успешен!", Toast.LENGTH_SHORT).show();
+                             }else if (response.code() == 401) {
+                                 Toast.makeText(LoginActivity.this, "Неверный логин или пароль", Toast.LENGTH_SHORT).show();
+                             }
 
-            }
+                         }
 
-            @Override
-            public void onFailure(Call<DriverResponce> call, Throwable t) {
-Toast.makeText(LoginActivity.this, "Ошибка сети", Toast.LENGTH_SHORT).show();
-Log.e("RETROFIT", "Ошибка сети: " + t.getMessage());
-            }
-        }
+                         @Override
+                         public void onFailure(Call<DriverResponce> call, Throwable t) {
+                             Toast.makeText(LoginActivity.this, "Ошибка сети", Toast.LENGTH_SHORT).show();
+                             Log.e("RETROFIT", "Ошибка сети: " + t.getMessage());
+                         }
+                     }
 
-);
+        );
         return driverResponce;
     }
 
