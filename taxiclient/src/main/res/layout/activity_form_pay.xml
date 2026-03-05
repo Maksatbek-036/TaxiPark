@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#2C2C2E"
     android:id="@+id/main"
-    tools:context=".MainActivity">
+    tools:context=".FormPay">
 
     <TextView
         android:id="@+id/titleTextView"

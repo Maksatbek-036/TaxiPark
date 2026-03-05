@@ -10,6 +10,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends AppCompatActivity {
@@ -47,7 +48,14 @@ public class MainActivity extends AppCompatActivity {
 
             return insets;
         });
-
+        // 👉 По умолчанию открываем MapsForgeFragment при первом запуске
+        if (savedInstanceState == null) {
+            MapsForge mapsForge = new MapsForge();
+            ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.frameLayout, mapsForge);
+            ft.commit();
+        }
     }
+
 
 }

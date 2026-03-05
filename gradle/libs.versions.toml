@@ -24,6 +24,7 @@ firebaseCrashlyticsBuildtools = "3.0.6"
 cronetEmbedded = "143.7445.0"
 retrofit = "2.9.0"
 preference = "1.2.1"
+firebaseFirestore = "26.1.0"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -48,6 +49,7 @@ firebase-crashlytics-buildtools = { group = "com.google.firebase", name = "fireb
 cronet-embedded = { group = "org.chromium.net", name = "cronet-embedded", version.ref = "cronetEmbedded" }
 retrofit = { module = "retrofit2:retrofit", version.ref = "retrofit" }
 preference = { group = "androidx.preference", name = "preference", version.ref = "preference" }
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

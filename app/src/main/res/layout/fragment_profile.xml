@@ -88,14 +88,16 @@
             android:textStyle="bold"
 
             />
-        <TextView
-            android:layout_width="330dp"
+        <EditText
+            android:id="@+id/editPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="+996774250425"
             android:textColor="@color/white"
             android:textSize="15sp"
+            android:inputType="phone"/>
 
-            />
 
 
 
@@ -133,14 +135,16 @@
             android:textStyle="bold"
 
             />
-        <TextView
-            android:layout_width="330dp"
+        <EditText
+            android:id="@+id/editEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="maksatbek036@gmail.com"
             android:textColor="@color/white"
             android:textSize="15sp"
+            android:inputType="textEmailAddress"/>
 
-            />
 
 
 
@@ -170,15 +174,14 @@ android:translationX="20dp"
                 />
 
             <ImageView
-                android:layout_width="293dp"
-                android:layout_height="wrap_content"
-
+                android:id="@+id/imageProfile"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:src="@drawable/prava"
-        android:translationX="40dp"
-                android:textColor="@color/white"
+                android:translationX="40dp"
+                android:clickable="true"
+                android:focusable="true"/>
 
-
-                />
 
 
         </GridLayout>
