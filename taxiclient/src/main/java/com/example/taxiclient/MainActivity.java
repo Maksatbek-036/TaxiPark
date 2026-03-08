@@ -56,6 +56,22 @@ public class MainActivity extends AppCompatActivity {
             ft.commit();
         }
     }
+    public void onRouteSelected(String addressA, String addressB) {
+        // 1. Создаем фрагмент карты
+        MapsForge mapFragment = new MapsForge();
+
+        // 2. Передаем данные через Аргументы
+        Bundle args = new Bundle();
+        args.putString("ARG_ADDR_A", addressA);
+        args.putString("ARG_ADDR_B", addressB);
+        mapFragment.setArguments(args);
+
+        // 3. Заменяем текущий фрагмент (Point) на новый (MapsForge)
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frameLayout, mapFragment) // ID контейнера из вашего layout
+                .addToBackStack(null) // Позволяет вернуться назад к вводу адреса
+                .commit();
+    }
 
 
 }

@@ -75,10 +75,18 @@ loadTariffs();
 
 
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), FormPay.class));
+        // Внутри Point.java
+        btn.setOnClickListener(v -> {
+            String addressA = editTextPointA.getText().toString().trim();
+            String addressB = editTextPointB.getText().toString().trim();
+
+            if (!addressA.isEmpty() && !addressB.isEmpty()) {
+                // Вызываем метод в MainActivity
+                if (getActivity() instanceof MainActivity) {
+                    ((MainActivity) getActivity()).onRouteSelected(addressA, addressB);
+                }
+            } else {
+                Toast.makeText(getContext(), "Введите оба адреса", Toast.LENGTH_SHORT).show();
             }
         });
         adapter=new TarifAdatpter(tariffList);

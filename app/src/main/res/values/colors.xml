@@ -8,4 +8,5 @@
     <color name="red">#FF0000</color>
     <color name="green">#008000</color>
     <color name="backround">#F5F5F5</color>
+    <color name="black_for_back">#323233</color>
 </resources>

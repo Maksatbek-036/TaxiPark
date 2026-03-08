@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Customer_map">
+
+    <org.osmdroid.views.MapView
+        android:id="@+id/mapview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@color/black_for_back"
+        app:layout_constraintBottom_toTopOf="@id/customer_map_button_cancel"
+        >
+        <ImageView
+            android:id="@+id/customer_map_driver_photo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/profile_icon"
+            />
+        <TextView
+            android:id="@+id/customer_map_driver_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Имя водителя"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:layout_toEndOf="@id/customer_map_driver_photo"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Номер телефона"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:layout_toEndOf="@id/customer_map_driver_photo"
+          android:layout_below="@id/customer_map_driver_name"
+            />
+
+
+    </RelativeLayout>
+    <Button
+        android:id="@+id/customer_map_button_cancel"
+        android:layout_width="180dp"
+        android:layout_height="50dp"
+        android:text="Отклонить"
+        android:backgroundTint="@color/black_for_back"
+        android:background="@drawable/card_quadro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
