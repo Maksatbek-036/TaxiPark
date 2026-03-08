@@ -11,46 +11,18 @@
         android:id="@+id/edit_text_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingVertical="15dp"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginBottom="250dp"
+        android:layout_marginTop="350dp"
+
         android:background="@drawable/shape"
         android:backgroundTint="@color/black_for_back"
         android:columnCount="1"
-        android:rowCount="2"
+        android:rowCount="1"
 
         >
 
-        <LinearLayout
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_marginTop="13dp"
-
-            >
-
-            <ImageView
-                android:layout_width="17dp"
-                android:layout_height="24dp"
-
-                android:src="@drawable/human"
-                android:translationX="8dp"
-                android:translationY="11dp" />
-
-            <EditText
-                android:id="@+id/edit_text_a"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="25dp"
-
-                android:backgroundTint="@color/white"
-                android:hint="@string/point_at_a"
-                android:inputType="text"
-                android:textColorHint="@color/gray"
-                android:textColor="@color/white" />
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -95,6 +67,7 @@
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     android:orientation="horizontal"
     android:layout_marginTop="450dp"
+    android:layout_marginHorizontal="15dp"
     
     />
     <Button

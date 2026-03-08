@@ -35,7 +35,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 ate an instance of this fragment.
  */
 public class Point extends Fragment  {
-EditText editTextPointA;
+
 private RecyclerView recyclerView;
 EditText editTextPointB;
 private List<Tariff> tariffList;
@@ -66,7 +66,7 @@ loadTariffs();
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView=view.findViewById(R.id.tariffs);
-        editTextPointA=view.findViewById(R.id.edit_text_a);
+
         editTextPointB=view.findViewById(R.id.edit_text_b);
         btn=view.findViewById(R.id.btn_order);
 
@@ -77,18 +77,22 @@ loadTariffs();
 
         // Внутри Point.java
         btn.setOnClickListener(v -> {
-            String addressA = editTextPointA.getText().toString().trim();
+
             String addressB = editTextPointB.getText().toString().trim();
 
-            if (!addressA.isEmpty() && !addressB.isEmpty()) {
-                // Вызываем метод в MainActivity
-                if (getActivity() instanceof MainActivity) {
-                    ((MainActivity) getActivity()).onRouteSelected(addressA, addressB);
-                }
+            if (!addressB.isEmpty() && !addressB.isEmpty()) {
+                // Переход на экран оплаты
+                Intent intent = new Intent(getActivity(), FormPay.class);
+
+                intent.putExtra("ARG_ADDR_B", addressB);
+                startActivity(intent);
             } else {
                 Toast.makeText(getContext(), "Введите оба адреса", Toast.LENGTH_SHORT).show();
             }
         });
+
+
+
         adapter=new TarifAdatpter(tariffList);
         recyclerView.setAdapter(adapter);
 

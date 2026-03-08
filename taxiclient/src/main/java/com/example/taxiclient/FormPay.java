@@ -35,10 +35,19 @@ public class FormPay extends AppCompatActivity {
         cashPaymentContainer.setOnClickListener(v -> selectPaymentMethod("CASH"));
 
         doneButton.setOnClickListener(v -> {
-            // Логика при нажатии "Готово"
             Toast.makeText(this, "Выбрано: " + selectedPaymentMethod, Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(FormPay.this, LoadingActivity.class));
+
+            // Получаем адреса из Point
+
+            String addrB = getIntent().getStringExtra("ARG_ADDR_B");
+
+            // Передаём их в CustomerMap
+            Intent mapIntent = new Intent(FormPay.this, CustomerMap.class);
+
+            mapIntent.putExtra("ARG_ADDR_B", addrB);
+            startActivity(mapIntent);
         });
+
     }
 
     private void selectPaymentMethod(String method) {
