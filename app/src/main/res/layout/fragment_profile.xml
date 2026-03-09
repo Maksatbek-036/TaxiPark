@@ -22,16 +22,18 @@
         >
 
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginVertical="10dp"
+           android:id="@+id/imageProfile"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginVertical="15dp"
             android:src="@mipmap/ic_launcher"
-            android:translationX="160dp" />
+            android:translationX="139dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ФИО"
+            android:layout_marginVertical="15dp"
             android:textAlignment="center"
             android:textColor="@color/white"
 
@@ -46,7 +48,7 @@
     android:layout_height="match_parent"
 
     android:orientation="vertical"
-    android:layout_marginTop="120dp"
+    android:layout_marginTop="160dp"
     android:background="@drawable/shape"
     android:backgroundTint="#242425"
     android:divider="@drawable/divider_line"
@@ -174,9 +176,9 @@ android:translationX="20dp"
                 />
 
             <ImageView
-                android:id="@+id/imageProfile"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:id="@+id/imageLicences"
+                android:layout_width="250dp"
+                android:layout_height="150dp"
                 android:src="@drawable/prava"
                 android:translationX="40dp"
                 android:clickable="true"

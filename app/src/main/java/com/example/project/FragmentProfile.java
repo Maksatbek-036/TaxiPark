@@ -1,40 +1,62 @@
 package com.example.project;
 
-import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.example.project.databinding.FragmentProfileBinding;
 
 public class FragmentProfile extends Fragment {
 
-
-
     private FragmentProfileBinding binding;
 
+
+    private final ActivityResultLauncher<String> profilePhotoLauncher = registerForActivityResult(
+            new ActivityResultContracts.GetContent(),
+            uri -> {
+                if (uri != null) {
+                    binding.imageProfile.setImageURI(uri);
+                    // Тут будет логика отправки аватарки на сервер
+                }
+            }
+    );
+
+
+    private final ActivityResultLauncher<String> licensePhotoLauncher = registerForActivityResult(
+            new ActivityResultContracts.GetContent(),
+            uri -> {
+                if (uri != null) {
+                    binding.imageLicences.setImageURI(uri);
+                    // Тут будет логика отправки лицензии на сервер
+                }
+            }
+    );
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
-        // Доступ к элементам напрямую
+        // Заполнение данных (заглушки)
         binding.editPhone.setText("+996774250425");
         binding.editEmail.setText("maksatbek036@gmail.com");
 
-        // Обработка клика по фото
+        // Клики по фото
         binding.imageProfile.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_PICK,
-                    android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            startActivityForResult(intent, 100);
+            profilePhotoLauncher.launch("image/*");
         });
 
-        // Сохранение данных по кнопке
+        binding.imageLicences.setOnClickListener(v -> {
+            licensePhotoLauncher.launch("image/*");
+        });
 
         return view;
     }
@@ -42,6 +64,6 @@ public class FragmentProfile extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        binding = null; // освобождаем биндинг
+        binding = null;
     }
 }

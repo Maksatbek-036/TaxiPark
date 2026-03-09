@@ -73,7 +73,7 @@ Memory memory;
         });
     }
 
-    // Выносим логику в отдельный метод для чистоты кода
+
     private void acceptOrderLogic(View v, Order currentOrder) {
         DriverResponce driver = memory.getDriver();
         if (driver == null) {
