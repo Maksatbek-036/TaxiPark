@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AcceptOrder">
+
+    <!-- Карта OSMDroid -->
+    <org.osmdroid.views.MapView
+        android:id="@+id/map"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/orderInfoLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:clickable="true" />
+
+    <!-- Блок информации о заказе -->
+    <LinearLayout
+        android:id="@+id/orderInfoLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@color/black_for_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:textColor="@color/white"
+            android:id="@+id/orderNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Номер заказа: 12345"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:textColor="@color/white"
+            android:id="@+id/orderTariff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Тариф: Эконом"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:textColor="@color/white"
+            android:id="@+id/orderDistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Дистанция до клиента: 2.5 км"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:textColor="@color/white"
+            android:id="@+id/orderAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Адрес доставки: ул. Ленина, 10"
+            android:textSize="14sp"/>
+
+        <!-- Кнопка принятия заказа -->
+        <Button
+            android:id="@+id/acceptButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Принять"
+
+            android:textColor="@android:color/white"
+            android:layout_marginTop="12dp"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
