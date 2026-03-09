@@ -91,9 +91,13 @@ Memory memory;
                 if (response.isSuccessful() && response.code() == 200) {
                     Toast.makeText(v.getContext(), "Заказ принят", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(v.getContext(), AcceptOrder.class);
+var body=response.body();
 
-                    // Совет: передайте ID заказа в следующую активность, чтобы там его отобразить
-                    intent.putExtra("ORDER_ID", orderId);
+                    intent.putExtra("ORDER_ID", currentOrder.getId());
+                    intent.putExtra("POINT_A", currentOrder.getPointA());
+                    intent.putExtra("POINT_B", currentOrder.getPointB());
+
+
                     v.getContext().startActivity(intent);
                 } else {
                     Toast.makeText(v.getContext(), "Ошибка сервера: " + response.code(), Toast.LENGTH_SHORT).show();

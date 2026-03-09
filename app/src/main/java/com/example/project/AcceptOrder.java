@@ -1,5 +1,6 @@
 package com.example.project;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -8,7 +9,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.graphhopper.GHRequest;
@@ -50,21 +50,18 @@ public class AcceptOrder extends AppCompatActivity {
     private TextView orderNumber, orderTariff, orderDistance, orderAddress;
     private Button acceptButton;
 
+    private String pointB; // координаты клиента
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // 1. Инициализация Mapsforge Graphics
         AndroidGraphicFactory.createInstance(getApplication());
-
-        // Настройка OSMDroid
         Configuration.getInstance().setUserAgentValue(getPackageName());
         setContentView(R.layout.activity_accept_order);
 
         initViews();
         setupMap();
-
-        // 2. Запуск подготовки навигатора
         initNavigation();
     }
 
@@ -74,25 +71,36 @@ public class AcceptOrder extends AppCompatActivity {
         orderTariff = findViewById(R.id.orderTariff);
         orderDistance = findViewById(R.id.orderDistance);
         orderAddress = findViewById(R.id.orderAddress);
-        acceptButton = findViewById(R.id.acceptButton);
+       
 
-        // Пример данных
-        orderNumber.setText("Заказ №12345");
-        orderAddress.setText("ул. Ленина, 10");
+        Intent intent = getIntent();
+        int orderId = intent.getIntExtra("ORDER_ID", -1);
+        String pointA = intent.getStringExtra("POINT_A");
+        pointB = intent.getStringExtra("POINT_B");
+
+        orderNumber.setText("Заказ №" + orderId);
+        orderAddress.setText(pointB);
 
         acceptButton.setOnClickListener(v -> {
-            // Пример: при принятии заказа строим маршрут до точки клиента
-            // Координаты клиента (в реальности придут из БД/API)
-            GeoPoint destination = new GeoPoint(42.8746, 74.5698);
-            drawRouteToClient(destination);
-            Toast.makeText(this, "Маршрут построен", Toast.LENGTH_SHORT).show();
+            try {
+                // pointB в формате "lat,lon"
+                String[] coords = pointB.split(",");
+                double lat = Double.parseDouble(coords[0]);
+                double lon = Double.parseDouble(coords[1]);
+
+                GeoPoint destination = new GeoPoint(lat, lon);
+                drawRouteToClient(destination);
+
+                Toast.makeText(this, "Маршрут построен", Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                Toast.makeText(this, "Ошибка координат: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
     private void setupMap() {
         mapView.setMultiTouchControls(true);
 
-        // Попытка загрузить офлайн карту
         File mapFile = new File(getExternalFilesDir(null), mapFileName);
         if (mapFile.exists()) {
             MapsForgeTileSource tileSource = MapsForgeTileSource.createFromFiles(new File[]{mapFile});
@@ -145,19 +153,25 @@ public class AcceptOrder extends AppCompatActivity {
             return;
         }
 
-        new AsyncTask<Void, Void, PointList>() {
+        new AsyncTask<Void, Void, GHResponse>() {
             @Override
-            protected PointList doInBackground(Void... voids) {
+            protected GHResponse doInBackground(Void... voids) {
                 GHRequest req = new GHRequest(start.getLatitude(), start.getLongitude(),
                         dest.getLatitude(), dest.getLongitude())
                         .setAlgorithm(Parameters.Algorithms.DIJKSTRA_BI)
                         .setVehicle("car");
-                GHResponse res = hopper.route(req);
-                return res.hasErrors() ? null : res.getBest().getPoints();
+                return hopper.route(req);
             }
 
             @Override
-            protected void onPostExecute(PointList points) {
+            protected void onPostExecute(GHResponse res) {
+                if (res == null || res.hasErrors()) return;
+
+                // расстояние
+                double distanceKm = res.getBest().getDistance() / 1000.0;
+                orderDistance.setText(String.format("%.2f км", distanceKm));
+
+                PointList points = res.getBest().getPoints();
                 if (points == null) return;
 
                 if (currentRouteLine != null) mapView.getOverlays().remove(currentRouteLine);

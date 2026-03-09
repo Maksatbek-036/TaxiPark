@@ -67,14 +67,7 @@
             android:textSize="14sp"/>
 
         <!-- Кнопка принятия заказа -->
-        <Button
-            android:id="@+id/acceptButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Принять"
 
-            android:textColor="@android:color/white"
-            android:layout_marginTop="12dp"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
