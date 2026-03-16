@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.taxiclient.API.RegisterRequest;
 
 import com.example.taxiclient.API.Api;
+import com.example.taxiclient.API.RetrofitClient;
 
 
 import retrofit2.Call;
@@ -27,7 +28,9 @@ public class RegisterActivity extends AppCompatActivity {
     Button btnRegister, btnToLogin;
     private Api registerAPI;
 
-    private final  String baseUrl="http://192.168.0.106:5001/";
+RetrofitClient retrofitClient = RetrofitClient.getInstance();
+
+
 
 
     @Override
@@ -40,12 +43,10 @@ public class RegisterActivity extends AppCompatActivity {
         etConfirm = findViewById(R.id.etConfirm);
         btnRegister = findViewById(R.id.btnRegister);
         btnToLogin = findViewById(R.id.btnToLogin); // кнопка "Уже есть аккаунт"
-        Retrofit retrofit=new Retrofit.Builder()
-                .baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+
 //        sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
-        registerAPI = retrofit.create(Api.class);
+        registerAPI = retrofitClient.getApi();
+
 
         // Регистрация нового пользователя
         btnRegister.setOnClickListener(v -> {
@@ -63,10 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
                 return;
             }
             registerUser(username, password);
-//            SharedPreferences.Editor editor = sharedPreferences.edit();
-//            editor.putString("username", username);
-//            editor.putString("password", password);
-//            editor.apply();
+//
 
         });
 
@@ -76,28 +74,27 @@ public class RegisterActivity extends AppCompatActivity {
             finish();
         });
     }
-    //регистрация
+
     private void registerUser(String username, String password) {
 
-RegisterRequest request=new RegisterRequest(username,password);
-        Call<Void> call = registerAPI.registerUser(request);
-        call.enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.isSuccessful()) {
-                    Log.d("RETROFIT", "Успех!");
-                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                    finish();
-                } else {
-                    Toast.makeText(RegisterActivity.this, "Ошибка : " + response.code() , Toast.LENGTH_SHORT).show();
-                    Log.e("RETROFIT", "Ошибка сервера: " + response.code());
-                }
-            }
+registerAPI.registerUser(new RegisterRequest(username, password)).enqueue(new Callback<Void>() {
+    @Override
+    public void onResponse(Call<Void> call, Response<Void> response) {
+  if (response.isSuccessful()) {
+      Log.d("RETROFIT", "Успех!");
+      startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+      finish();
+  } else {
+      Log.e("RETROFIT", "Ошибка сервера: " + response.code());
+  }
+    }
 
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                Log.e("RETROFIT", "Ошибка сети: " + t.getMessage());
-            }
-        }) ;
+    @Override
+    public void onFailure(Call<Void> call, Throwable t) {
+Toast.makeText(RegisterActivity.this, "Ошибка регистрации: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+
+    }
+});
+
     }
 }

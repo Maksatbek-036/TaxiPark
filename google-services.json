@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "230302168260",
+    "project_id": "taxipark-65193",
+    "storage_bucket": "taxipark-65193.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230302168260:android:f310d808177562bca0c591",
+        "android_client_info": {
+          "package_name": "com.example.project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEpjyZ0DMsOuH4hYNa-vDd_UK8EtQOqB8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

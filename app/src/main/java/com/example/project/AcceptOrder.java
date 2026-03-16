@@ -71,7 +71,7 @@ public class AcceptOrder extends AppCompatActivity {
         orderTariff = findViewById(R.id.orderTariff);
         orderDistance = findViewById(R.id.orderDistance);
         orderAddress = findViewById(R.id.orderAddress);
-       
+
 
         Intent intent = getIntent();
         int orderId = intent.getIntExtra("ORDER_ID", -1);

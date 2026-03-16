@@ -1,120 +1,102 @@
 package com.example.taxiclient;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.taxiclient.API.Api;
-import com.example.taxiclient.API.RegisterRequest;
-
-import com.example.taxiclient.Response.ClientResponce;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.taxiclient.API.Api;
+import com.example.taxiclient.API.RegisterRequest;
+import com.example.taxiclient.API.RetrofitClient;
+import com.example.taxiclient.Response.ClientResponce;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivity extends AppCompatActivity {
 
     EditText etUsername, etPassword;
     Button btnLogin;
     Api loginApi;
-    Memory memory;
-
- ClientResponce clientResponse;
-
+    Memory memory; // Только объявляем
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // 1. Инициализируем память ПЕРЕД проверкой и установкой View
+        memory = new Memory(this);
 
-
-
-        setContentView(R.layout.activity_login);
-        etUsername = findViewById(R.id.etUsername);
-        etPassword = findViewById(R.id.etPassword);
-        btnLogin = findViewById(R.id.btnLogin);
-        Retrofit retrofit=new Retrofit.Builder()
-                .baseUrl("http://192.168.0.106:5001/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        memory=new Memory(this);
-
+        // 2. Если клиент уже залогинен — сразу на главную
         if (memory.getClient() != null) {
             startActivity(new Intent(this, MainActivity.class));
             finish();
             return;
         }
-        loginApi = retrofit.create(Api.class);
 
+        setContentView(R.layout.activity_login);
 
-//         sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
-
+        etUsername = findViewById(R.id.etUsername);
+        etPassword = findViewById(R.id.etPassword);
+        btnLogin = findViewById(R.id.btnLogin);
 
         btnLogin.setOnClickListener(v -> {
             String login = etUsername.getText().toString().trim();
             String password = etPassword.getText().toString().trim();
+
             if (login.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Все поля обязательны!", Toast.LENGTH_SHORT).show();
                 return;
             }
-//            String savedUsername = sharedPreferences.getString("username", "");
-//            String savedPassword = sharedPreferences.getString("password", "");
-
-//            if (username.equals(savedUsername) && password.equals(savedPassword)) {
-//                Toast.makeText(this, "Вход успешен!", Toast.LENGTH_SHORT).show();
-//                // После входа можно перейти обратно на MainActivity или другой экран
-//startActivity(new Intent(this, MainActivity.class));
-//finish();
-//            } else {
-//                Toast.makeText(this, "Неверный логин или пароль", Toast.LENGTH_SHORT).show();
-//            }
-            login(login,password);
-
-
-
+            login(login, password);
         });
     }
-    private ClientResponce login(String login, String password) {
+
+    private void login(String login, String password) {
+        RetrofitClient retrofitClient = RetrofitClient.getInstance();
+        loginApi = retrofitClient.getApi();
         RegisterRequest request = new RegisterRequest(login, password);
 
-        Call<ClientResponce> call = loginApi.login(request);
-        call.enqueue(new Callback<ClientResponce>() {
-                         @Override
-                         public void onResponse(Call<ClientResponce> call, Response<ClientResponce> response) {
-                             if(response.isSuccessful() && response.body()!=null){
-                                 clientResponse=response.body();
-                                 memory.saveClient(clientResponse);
+        loginApi.login(request).enqueue(new Callback<ClientResponce>() {
+            @Override
+            public void onResponse(Call<ClientResponce> call, Response<ClientResponce> response) {
+                // Проверяем: успешен ли ответ И есть ли тело ответа
+                if (response.isSuccessful() && response.body() != null) {
+                    Log.d("RETROFIT", "Успех!");
+                    Toast.makeText(LoginActivity.this, "Вход успешен!", Toast.LENGTH_SHORT).show();
 
-                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                                 finish();
-                                 Toast.makeText(LoginActivity.this, "Вход успешен!", Toast.LENGTH_SHORT).show();
-                             }else if (response.code() == 401) {
-                                 Toast.makeText(LoginActivity.this, "Неверный логин или пароль", Toast.LENGTH_SHORT).show();
-                             }
+                    memory.saveClient(response.body());
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    finish();
+                } else {
+                    // Если ошибка (например, 401 или 500), response.body() будет null
+                    // Пытаемся достать текст ошибки из errorBody безопасно
+                    String errorMessage = "Ошибка сервера";
+                    try {
+                        if (response.errorBody() != null) {
+                            errorMessage = response.errorBody().string();
+                        }
+                    } catch (Exception e) {
+                        errorMessage = "Ошибка: " + response.code();
+                    }
 
-                         }
+                    Log.e("RETROFIT", "Ошибка: " + errorMessage);
+                    Toast.makeText(LoginActivity.this, "Ошибка входа: " + response.code(), Toast.LENGTH_SHORT).show();
+                }
+            }
 
-                         @Override
-                         public void onFailure(Call<ClientResponce> call, Throwable t) {
-                             Toast.makeText(LoginActivity.this, "Ошибка сети", Toast.LENGTH_SHORT).show();
-                             Log.e("RETROFIT", "Ошибка сети: " + t.getMessage());
-                         }
-                     }
-
-        );
-        return clientResponse;
+            @Override
+            public void onFailure(Call<ClientResponce> call, Throwable t) {
+                // Проверяем t на null перед вызовом getMessage()
+                String message = (t != null) ? t.getMessage() : "Неизвестная ошибка сети";
+                Log.e("RETROFIT", "Ошибка сети: " + message);
+                Toast.makeText(LoginActivity.this, "Проблема с соединением", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
-
-
 }

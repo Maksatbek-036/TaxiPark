@@ -13,11 +13,13 @@ import retrofit2.http.POST;
 public interface Api {
     @POST("client") // Ваш эндпоинт
     Call<Void> registerUser(@Body RegisterRequest request);
-    @POST("login")
+    @POST("client/login")
     Call<ClientResponce> login(@Body RegisterRequest request);
 
-    @POST("orders")
+    @POST("order")
     Call<Void> createOrder(@Body OrderRequest request);
+
+
     @GET("tariff")
     Call<List<Tariff>> getTariffs();
 
