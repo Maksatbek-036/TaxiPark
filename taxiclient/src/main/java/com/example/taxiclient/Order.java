@@ -9,6 +9,11 @@ public class Order implements Serializable {
 
     public int tariffId ;
     public String PointA;
+    public String PointB;
+
+    public String getPointB() {
+        return PointB;
+    }
 
     public boolean payMethod;
     public int totalPrice;
@@ -73,5 +78,9 @@ public class Order implements Serializable {
         this.totalPrice = totalPrice;
     }
 
- ;
+    public void setPointB(String addressB) {
+
+    }
+
+    ;
 }

@@ -1,5 +1,7 @@
 package com.example.taxiclient;
 
+import static android.app.PendingIntent.getActivity;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -47,6 +49,7 @@ Memory memory;
                 Toast.makeText(this, "Выберите способ оплаты", Toast.LENGTH_SHORT).show();
                 return;
             }
+            memory = new Memory(this);
             // Вызываем метод отправки заказа на сервер
             sendOrderToServer();
         });
@@ -56,6 +59,7 @@ Memory memory;
 
     private void sendOrderToServer() {
         // 1. Извлекаем данные, которые прилетели из PointFragment
+
         String addrB = getIntent().getStringExtra("ARG_ADDR_B");
         String addrA = getIntent().getStringExtra("ARG_ADDR_A"); // Передай его тоже через Intent
         int tariffId = getIntent().getIntExtra("TARIFF_ID", 0);
@@ -68,7 +72,6 @@ Memory memory;
 
         boolean payMethod = selectedPaymentMethod.equals("CARD");
 
-
        OrderRequest request=new OrderRequest(
                 clientID,
                 payMethod,
@@ -77,29 +80,44 @@ Memory memory;
                 tariffId,
                 totalPrice
        );
+       Log.d("API", "Отправляем запрос на сервер: " +
+               "clientID=" + clientID +
+               ", payMethod=" + payMethod +
+               ", addrA=" + addrA +
+               ", addrB=" + addrB +
+               ", tariffId=" + tariffId +
+               ", totalPrice=" + totalPrice
+               );
 
 Api api = retrofitClient.getApi();
-api.createOrder(request).enqueue(new Callback<Void>(){
-    @Override
-    public void onResponse(Call<Void> call, Response<Void> response) {
-        if(response.isSuccessful()) {
-            Toast.makeText(FormPay.this, "Заказ успешно создан!", Toast.LENGTH_SHORT).show();
-            Log.d("RETROFIT", "Успех!");
-            startActivity(new Intent(FormPay.this, MainActivity.class));
-            finish();
-        } else {
-            Log.e("RETROFIT", "Ошибка сервера: " + response.code());
-        }
-    }
+api.createOrder(request).enqueue(new Callback<Order>() {
+      @Override
+     public void onResponse(Call<Order> call, Response<Order> response) {
+         if(response.isSuccessful()) {
+         Toast.makeText(FormPay.this, "Заказ успешно оформлен", Toast.LENGTH_SHORT).show();
+         Intent intent = new Intent(FormPay.this, MainActivity.class);
+         intent.putExtra("ORDER_ID", response.body().getId());
+         startActivity(intent);
+         finish();
+         }
+         else {
+         Toast.makeText(FormPay.this, "Ошибка при оформлении заказа", Toast.LENGTH_SHORT).show();
+         Log.e("API", "Ошибка при оформлении заказа: " + response.code());
+         }
+     }
 
-    @Override
-    public void onFailure(Call<Void> call, Throwable t) {
-Log.e("RETROFIT", "Ошибка сети: " + t.getMessage());
-Toast.makeText(FormPay.this, "Ошибка сети: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-    }
-});
+  @Override
+  public void onFailure(Call<Order> call, Throwable t) {
+      String safeMessage = (t.getMessage() != null) ? t.getMessage() : "Неизвестная ошибка";
+      Log.e("RETROFIT", "Ошибка сети: " + safeMessage);
+
+      Toast.makeText(FormPay.this, "Ошибка сети: " + safeMessage, Toast.LENGTH_SHORT).show();
+
+  }
+                                 });
 
         findViewById(R.id.doneButton).setEnabled(false);
+
 
 
     }

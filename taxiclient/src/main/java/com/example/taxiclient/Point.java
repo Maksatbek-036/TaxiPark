@@ -1,6 +1,7 @@
 package com.example.taxiclient;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -42,12 +44,15 @@ import retrofit2.Response;
 public class Point extends Fragment {
 
     private RecyclerView recyclerView;
+
+    private EditText editTextPointA;
     private EditText editTextPointB;
+    String addressA;
     private Button btn;
 
     private List<Tariff> tariffList;
     private TarifAdatpter adapter;
-
+    private ImageButton btnMyLocation;
     private FusedLocationProviderClient fusedLocationClient;
     private GraphHopper hopper;
     private DatabaseHelper dbHelper;
@@ -63,6 +68,7 @@ public class Point extends Fragment {
 
         initGraphHopper();
         loadTariffs();
+
     }
 
     @Override
@@ -75,13 +81,19 @@ public class Point extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView = view.findViewById(R.id.tariffs);
+        editTextPointA = view.findViewById(R.id.edit_text_a);
         editTextPointB = view.findViewById(R.id.edit_text_b);
         btn = view.findViewById(R.id.btn_order);
+
+        btnMyLocation = view.findViewById(R.id.btn_my_location);
+
 
         // Настройка горизонтального списка тарифов
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         adapter = new TarifAdatpter(tariffList);
         recyclerView.setAdapter(adapter);
+
+        btnMyLocation.setOnClickListener(v -> getMyLocation());
 
         btn.setOnClickListener(v -> startOrderProcess());
     }
@@ -106,6 +118,7 @@ public class Point extends Fragment {
     }
 
     private void calculateDistanceAndPrice(double myLat, double myLon) {
+        String addressA =getMyLocation();
         String addressB = editTextPointB.getText().toString().trim();
         Tariff selectedTariff = adapter.getSelectedTariff();
 
@@ -133,14 +146,18 @@ public class Point extends Fragment {
 
                     Order order = new Order();
                     order.setClientId(memory.getClient().getId()); // ID текущего клиента
-                    order.setPointA("Мое местоположение");
+                    order.setPointA(addressA);
+                    order.setPointB(addressB);
                     order.setTariffId(selectedTariff.getId());
                     order.setTotalPrice(finalPrice);
-
+Toast.makeText(getContext(), "Стоимость заказа: " + finalPrice+" cом расстояние:"+distance, Toast.LENGTH_SHORT).show();
                     // Переход на оплату
                     Intent intent = new Intent(getActivity(), FormPay.class);
                     intent.putExtra("ORDER_DATA", order);
+                    intent.putExtra("ARG_ADDR_A", addressA);
                     intent.putExtra("ARG_ADDR_B", addressB);
+                    intent.putExtra("TOTAL_PRICE", finalPrice);
+                    intent.putExtra("TARIFF_ID", selectedTariff.getId());
                     intent.putExtra("DISTANCE", String.format("%.1f", distance));
                     startActivity(intent);
                 } else {
@@ -150,6 +167,39 @@ public class Point extends Fragment {
         }).start();
     }
 
+private String getMyLocation(){
+    if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
+            != PackageManager.PERMISSION_GRANTED) {
+        ActivityCompat.requestPermissions(requireActivity(),
+                new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
+    }
+
+    fusedLocationClient.getLastLocation()
+            .addOnSuccessListener( location -> {
+                if (location != null) {
+                    // Получаем широту и долготу
+                    double latitude = location.getLatitude();
+                    double longitude = location.getLongitude();
+
+                    // Конвертируем в строки
+                    String latStr = String.valueOf(latitude);
+                    String lonStr = String.valueOf(longitude);
+
+                    // Можно объединить в один адрес
+                     addressA = latStr + ", " + lonStr;
+
+                    Log.d("LOCATION", "Lat: " + latStr + " Lon: " + lonStr);
+                } else {
+                    Log.e("LOCATION", "Не удалось получить локацию");
+                }
+            });
+    editTextPointA.setText(addressA);
+    return addressA;
+
+
+
+
+}
     private void loadTariffs() {
         RetrofitClient.getInstance().getApi().getTariffs().enqueue(new Callback<List<Tariff>>() {
             @Override

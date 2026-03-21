@@ -7,6 +7,7 @@ public class ClientResponce {
     private String login;
     private String password;
 
+
     public int getId() {
         return id;
     }

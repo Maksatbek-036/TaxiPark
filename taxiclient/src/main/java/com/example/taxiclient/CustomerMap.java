@@ -44,7 +44,7 @@ public class CustomerMap extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_map);
+
 
         AndroidGraphicFactory.createInstance(getApplication());
         mapView = findViewById(R.id.mapview);
@@ -63,6 +63,11 @@ public class CustomerMap extends AppCompatActivity {
 
 
     }
+    private void getDriverInfo(){
+        int driverId = getIntent().getIntExtra("DRIVER_ID", 0);
+
+    }
+
 
     private void processRouteRequest(String addressB) {
         GeoPoint driverPos = mLocationOverlay.getMyLocation(); // точка А
