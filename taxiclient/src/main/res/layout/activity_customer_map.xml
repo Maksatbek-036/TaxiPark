@@ -39,6 +39,7 @@ android:layout_marginBottom="15dp"
             android:layout_toEndOf="@id/customer_map_driver_photo"
             />
         <TextView
+            android:id="@+id/customer_map_driver_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Номер телефона"
@@ -59,8 +60,11 @@ android:layout_marginBottom="15dp"
         android:layout_marginHorizontal="60dp"
         android:layout_marginVertical="15dp"
         android:text="Отклонить"
-        android:background="@color/chocolate"
 
+        android:background="@drawable/border_45_"
+        android:backgroundTint="@color/black"
+app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:radius="5dp"/>
 

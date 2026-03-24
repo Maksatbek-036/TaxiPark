@@ -24,7 +24,7 @@ public interface Api {
     @GET("tariff")
     Call<List<Tariff>> getTariffs();
     @GET("orders/driver")
-    Call<DriverInfoDTO> getOrdersForDriver(@Query("driverId") int driverId);
+    Call<DriverInfoDTO> getOrdersForDriver(@Query("orderId") int orderId);
 
 
 

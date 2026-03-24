@@ -9,6 +9,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.taxiclient.API.Api;
+import com.example.taxiclient.API.RetrofitClient;
+import com.example.taxiclient.Response.DriverInfoDTO;
+import com.example.taxiclient.databinding.ActivityCustomerMapBinding;
 import com.graphhopper.GHRequest;
 import com.graphhopper.GHResponse;
 import com.graphhopper.GraphHopper;
@@ -30,7 +34,13 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class CustomerMap extends AppCompatActivity {
+    private ActivityCustomerMapBinding binding;
+
     private MapView mapView;
 
     private MyLocationNewOverlay mLocationOverlay;
@@ -44,7 +54,8 @@ public class CustomerMap extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+binding=ActivityCustomerMapBinding.inflate(getLayoutInflater());
+setContentView(binding.getRoot());
 
         AndroidGraphicFactory.createInstance(getApplication());
         mapView = findViewById(R.id.mapview);
@@ -65,6 +76,25 @@ public class CustomerMap extends AppCompatActivity {
     }
     private void getDriverInfo(){
         int driverId = getIntent().getIntExtra("DRIVER_ID", 0);
+        RetrofitClient retrofitClient=RetrofitClient.getInstance();
+        Api api=retrofitClient.getApi();
+        int orderId=getIntent().getIntExtra("ORDER_ID",0);
+api.getOrdersForDriver(orderId).enqueue(new Callback<DriverInfoDTO>() {
+    @Override
+    public void onResponse(Call<DriverInfoDTO> call, Response<DriverInfoDTO> response) {
+        binding.customerMapDriverName.setText(response.body().getFullName());
+        binding.customerMapDriverPhone.setText(response.body().getNumber());
+        if(response.body().getProfilePhoto()!=null){
+            Glide.with(CustomerMap.this)
+                    .load(ApiConfig.getBaseUrl()+response.body().getProfilePhoto())
+        }
+    }
+
+    @Override
+    public void onFailure(Call<DriverInfoDTO> call, Throwable t) {
+
+    }
+});
 
     }
 
