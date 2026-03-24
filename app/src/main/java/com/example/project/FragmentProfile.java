@@ -1,5 +1,6 @@
 package com.example.project;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,9 +13,12 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.example.project.API.Api;
+import com.example.project.API.ApiConfig;
 import com.example.project.API.DriverEditRequest;
 import com.example.project.API.RetrofitClient;
+import com.example.project.Responses.DriverResponce;
 import com.example.project.databinding.FragmentProfileBinding;
 
 import java.io.ByteArrayOutputStream;
@@ -31,6 +35,8 @@ import retrofit2.Response;
 public class FragmentProfile extends Fragment {
 
     private FragmentProfileBinding binding;
+
+
     private Uri profileUri;
     private Uri licenseUri;
 
@@ -64,10 +70,42 @@ public class FragmentProfile extends Fragment {
         binding.imageProfile.setOnClickListener(v -> profilePhotoLauncher.launch("image/*"));
         binding.imageLicences.setOnClickListener(v -> licensePhotoLauncher.launch("image/*"));
         binding.saveButton.setOnClickListener(v -> saveProfileData());
-
+        getProfileData();
         return binding.getRoot();
     }
+    private void getProfileData() {
+        Memory memory = new Memory(getContext());
+        DriverResponce driver = memory.getDriver();
 
+
+
+
+if(driver.getName()!=null){
+    binding.editName.setText(driver.getName());
+}
+        binding.editName.setHint("Введите ваше имя");
+        binding.editPhone.setText(driver.getPhone());
+        binding.editEmail.setText(driver.getLogin());
+
+
+        if (driver.getProfilePhoto() != null && !driver.getProfilePhoto().isEmpty()) {
+            Glide.with(this)
+                    .load(ApiConfig.getBaseUrl()+driver.getProfilePhoto())
+                    .into(binding.imageProfile);
+        } else {
+            binding.imageProfile.setImageResource(R.mipmap.ic_launcher);
+        }
+
+        if (driver.getLicenses() != null && !driver.getLicenses().isEmpty()) {
+           Glide.with(this)
+                    .load(ApiConfig.getBaseUrl()+driver.getLicenses())
+                    .into(binding.imageLicences);
+        }
+        else{
+            binding.imageLicences.setImageResource(R.mipmap.ic_launcher);
+        }
+
+    }
     private void saveProfileData() {
         Memory memory = new Memory(getContext());
         int id = memory.getDriver().getId();
@@ -123,6 +161,9 @@ public class FragmentProfile extends Fragment {
                         }
                     }
                 });
+        memory.clear();
+        startActivity(new Intent(getContext(), LoginActivity.class));
+        getActivity().finish();
     }
 
 

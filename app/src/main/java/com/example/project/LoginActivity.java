@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.project.API.ApiConfig;
 import com.example.project.API.LoginApi;
 import com.example.project.API.RegisterRequest;
 import com.example.project.Responses.DriverResponce;
@@ -48,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
         Retrofit retrofit=new Retrofit.Builder()
-                .baseUrl("http://192.168.0.106:5001/")
+                .baseUrl(ApiConfig.getBaseUrl()+"/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         memory=new Memory(this);

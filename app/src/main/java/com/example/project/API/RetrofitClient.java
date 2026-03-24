@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
     // Укажите ваш базовый URL (обязательно заканчивается на /)
-    private static final String BASE_URL = "http://192.168.0.106:5001/";
+    private static final String BASE_URL = ApiConfig.getBaseUrl();
     private static RetrofitClient instance;
     private final Retrofit retrofit;
 
@@ -20,7 +20,7 @@ public class RetrofitClient {
 
 
         retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(BASE_URL+"/")
                 .addConverterFactory(GsonConverterFactory.create()) // Конвертер JSON в Java объекты
                 .client(client)
                 .build();

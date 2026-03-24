@@ -17,7 +17,7 @@ public class RetrofitClient {
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.106:5001/") // Проверь свой IP!
+                .baseUrl(ApiConfig.getBaseUrl()+"/") // Проверь свой IP!
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();

@@ -1,11 +1,16 @@
 package com.example.project.Responses;
 
 public class DriverResponce {
-    private int id;
+  private int id;
+  private String name;
     private String login;
-    private String password;
-    private  int status;
-    private  String licenses;
+  private String phone;
+  private String password;
+  private int status;
+  private String licenses;
+  private String profilePhoto;
+
+
 
     public int getId() {
         return id;
@@ -15,16 +20,40 @@ public class DriverResponce {
         this.id = id;
     }
 
-    public void setLicenses(String licenses) {
-        this.licenses = licenses;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLogin() {
+        return login;
     }
 
     public void setLogin(String login) {
         this.login = login;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getStatus() {
+        return status;
     }
 
     public void setStatus(int status) {
@@ -35,15 +64,21 @@ public class DriverResponce {
         return licenses;
     }
 
-    public String getLogin() {
-        return login;
+    public void setLicenses(String licenses) {
+        this.licenses = licenses;
     }
 
-    public String getPassword() {
-        return password;
+    public String getProfilePhoto() {
+        return profilePhoto;
     }
 
-    public int getStatus() {
-        return status;
+    public void setProfilePhoto(String profilePhoto) {
+        this.profilePhoto = profilePhoto;
     }
+
+
+
+
+
+
 }
